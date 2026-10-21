@@ -1,0 +1,17 @@
+name: Feature request
+description: Propose a useful, bounded improvement
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem and desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed behavior and acceptance criteria
+      description: Describe a concrete example, constraints, and how to verify success.
+    validations:
+      required: true

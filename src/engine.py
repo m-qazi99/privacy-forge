@@ -34,5 +34,6 @@ def run(p):
     if not isinstance(p,dict):raise ValueError("Send a JSON object.")
     if p.get("workspace")=="studio":
         from lab import run as studio_run
-        return studio_run(p)
+        from review import attach
+        return attach(p, studio_run(p))
     return legacy_run(p)
