@@ -31,3 +31,10 @@ The repository tests both the original and advanced engine, serialization, algor
 ## First-visit preview
 
 `sample-result.js` contains the native Python result for the synthetic studio sample, generated at build time. The UI labels it Synthetic preview until the visitor runs the worker. Exports and snapshots enable only after an actual Python run. This provides a useful first visit without pretending a browser computation has already happened.
+
+
+## Version 2.1 review-to-handoff layer
+
+`engine.run` preserves legacy requests. Studio requests run the existing analysis, then `review.attach` derives deterministic priorities from the computed result. The review layer does not modify inputs or perform remediation. The mirrored `review.py` is downloaded by the browser worker and checked for native/browser parity.
+
+`review-desk.js` listens for `workbench:result`, renders Python priorities, filters by severity and retains inspection checks in memory. New results and page reloads clear those checks. Python exports unchecked Markdown and JSON; the UI exports Markdown with the visitor's checkmarks. A checked item is not approval or certification. See [API](API.md), [user guide](USER_GUIDE.md), and [development workflow](DEVELOPMENT.md).
